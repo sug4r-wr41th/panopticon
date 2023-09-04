@@ -7,15 +7,7 @@ import {
 
 import { useLocalStorage } from "./hooks/useLocalStorage";
 
-import Clock from "./components/Clock"
-
-import Location from "./components/Location"
-
-import Ransoms from "./components/Ransoms"
-
-import Articles from "./components/Articles";
-
-import { Col, Row, Space, Menu, Switch, Breadcrumb, Tag, Typography, Image, Alert, } from "antd";
+import { Space, Menu, Switch, Breadcrumb, Tag, Typography, Image, Alert, Result } from "antd";
 
 import { ConfigProvider, theme } from "antd";
 
@@ -25,7 +17,17 @@ import { DashboardOutlined, LinkOutlined } from "@ant-design/icons";
 
 import { Layout } from "antd";
 
+import { RouterProvider as Router, createHashRouter } from 'react-router-dom'
+
+import Dashboard from "./routes/Dashboard";
+
 const { Sider, Content, Footer } = Layout;
+
+const router = createHashRouter([
+  {
+    path: "/", element: <Dashboard />, errorElement: <Result status="404" title="404 Not Found" subTitle="Sorry, the page you visited does not exist." />
+  },
+]);
 
 const items: MenuProps["items"] = [
   {
@@ -122,30 +124,7 @@ export default function App() {
 
               <Alert closable message="Auto-refresh is on, page reloads every 5 minutes" type="info" showIcon />
 
-              <Row gutter={16}>
-
-                <Col span={6}>
-                  <Location />
-                </Col>
-
-                <Col span={6}>
-                  <Clock title="Rome, Italy" locale="it-IT" zone="Europe/Rome" />
-                </Col>
-
-                <Col span={6}>
-                  <Clock title="New York, United States" locale="en-US" zone="America/New_York" />
-                </Col>
-
-                <Col span={6}>
-                  <Clock title="Tokyo, Japan" locale="ja-JP" zone="Asia/Tokyo" />
-                </Col>
-              </Row>
-
-              <Typography.Text>This platform serves as a single pane of glass for all cyber-security related and relevant content. It's created by security personnel to assist security operation centers' threat intelligence routine by aggregating multiple feeds from well-known government agencies, magazines and researchers' blogs without jumping from source to source back and forth. At the moment it's a work in progress, features ideas and suggestions are welcome</Typography.Text>
-              
-              <Ransoms />
-
-              <Articles />
+              <Router router={router} />
 
             </Space>
 
@@ -161,5 +140,4 @@ export default function App() {
 
     </ConfigProvider>
   );
-
 }
