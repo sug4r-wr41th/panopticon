@@ -131,7 +131,7 @@ export default function App() {
           </Content>
 
           <Footer style={{ textAlign: "center" }}>
-            panopticon © 2023 Created by anonymous user with <a href="https://react.dev/" target="_blank">React</a> and <a href="https://ant.design" target="_blank">Ant Design</a>
+            <a href="https://github.com/sug4r-wr41th/panopticon" target="_blank">panopticon</a> © 2023 Created by anonymous user with <a href="https://react.dev/" target="_blank">React</a> and <a href="https://ant.design" target="_blank">Ant Design</a>
           </Footer>
 
         </Layout>
