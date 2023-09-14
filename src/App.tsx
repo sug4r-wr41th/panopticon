@@ -1,5 +1,7 @@
 import type { MenuProps } from "antd";
 
+import { Outlet } from "react-router";
+
 import {
   useState,
   useEffect 
@@ -17,17 +19,7 @@ import { DashboardOutlined, LinkOutlined } from "@ant-design/icons";
 
 import { Layout } from "antd";
 
-import { RouterProvider as Router, createHashRouter } from 'react-router-dom'
-
-import Dashboard from "./routes/Dashboard";
-
 const { Sider, Content, Footer } = Layout;
-
-const router = createHashRouter([
-  {
-    path: "/", element: <Dashboard />, errorElement: <Result status="404" title="404 Not Found" subTitle="Sorry, the page you visited does not exist." />
-  },
-]);
 
 const items: MenuProps["items"] = [
   {
@@ -124,7 +116,7 @@ export default function App() {
 
               <Alert closable message="Auto-refresh is on, page reloads every 5 minutes" type="info" showIcon />
 
-              <Router router={router} />
+              <Outlet />
 
             </Space>
 
