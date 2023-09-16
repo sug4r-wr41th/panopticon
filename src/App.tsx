@@ -1,6 +1,6 @@
 import type { MenuProps } from "antd";
 
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 import {
   useState,
@@ -33,7 +33,7 @@ const items: MenuProps["items"] = [
         children: [
           {
             key: 101,
-            label: "All"
+            label: <Link to="/">All</Link>
           },
           {
             key: 102,
