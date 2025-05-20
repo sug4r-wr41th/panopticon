@@ -1,0 +1,47 @@
+[
+  {
+    "source": "any.run", "feed": "https://feeds.feedburner.com/anyrun", "category": "vendor"
+  },
+  {
+    "source": "CrowdStrike", "feed": "https://www.crowdstrike.com/en-us/blog/feed", "category": "vendor"
+  },
+  {
+    "source": "Fortinet (PSIRT)", "feed": "https://filestore.fortinet.com/fortiguard/rss/ir.xml", "category": "vendor"
+  },
+  {
+    "source": "Microsoft", "feed": "https://msrc.microsoft.com/blog/feed", "category": "vendor"
+  },
+  {
+    "source": "ProofPoint", "feed": "https://www.proofpoint.com/us/rss-feeds/blog-feed.xml", "category": "vendor"
+  },
+  {
+    "source": "Cisco", "feed": "https://sec.cloudapps.cisco.com/security/center/psirtrss20/CiscoSecurityAdvisory.xml", "category": "vendor"
+  },
+  {
+    "source": "Sophos", "feed": "https://news.sophos.com/en-us/feed", "category": "vendor"
+  },
+  {
+    "source": "Google", "feed": "https://blog.google/threat-analysis-group/rss/", "category": "vendor"
+  },
+  {
+    "source": "TrendMicro (cyber threat)", "feed": "https://newsroom.trendmicro.com/cyberthreat?pagetemplate=rss", "category": "vendor"
+  },
+  {
+    "source": "TrendMicro (research)", "feed": "https://newsroom.trendmicro.com/news-releases?pagetemplate=rss&category=787", "category": "vendor"
+  },
+  {
+    "source": "any.run", "feed": "https://feeds.feedburner.com/anyrun", "category": "vendor"
+  },
+  {
+    "source": "ACN CSIRT Italia", "feed": "https://www.acn.gov.it/portale/feedrss/-/journal/rss/20119/723192", "category": "alerts"
+  },
+  {
+    "source": "AGiD", "feed": "https://cert-agid.gov.it/feed/", "category": "agency"
+  },
+  {
+    "source": "Red Hot Cyber", "feed": "https://www.redhotcyber.com/feed/gn", "category": "news"
+  },
+  {
+    "source": "The Hacker News", "feed": "https://feeds.feedburner.com/TheHackersNews", "category": "news"
+  }
+]

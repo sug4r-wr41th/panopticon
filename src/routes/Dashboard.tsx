@@ -73,20 +73,7 @@ async function getRSSFeed(url: string, category: string, source: string) {
   
 }
 
-const rss = [
-  {
-    source: "CSIRT.it", feed: "https://www.csirt.gov.it/data/indexer/rss", category: "alerts"
-  },
-  {
-    source: "AGiD", feed: "https://cert-agid.gov.it/feed/", category: "alerts"
-  },
-  {
-    source: "Red Hot Cyber", feed: "https://www.redhotcyber.com/feed/gn", category: "news"
-  },
-  {
-    source: "The Hacker News", feed: "https://feeds.feedburner.com/TheHackersNews", category: "news"
-  },
-]
+import rss from '../sources/feeds.json'
 
 export default function Dashboard({ ransoms: any } : any) {
 
