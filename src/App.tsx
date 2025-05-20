@@ -123,7 +123,7 @@ export default function App() {
           </Content>
 
           <Footer style={{ textAlign: "center" }}>
-            <a href="https://github.com/sug4r-wr41th/panopticon" target="_blank">panopticon</a> © 2023 Created by anonymous user with <a href="https://react.dev/" target="_blank">React</a> and <a href="https://ant.design" target="_blank">Ant Design</a>
+            <a href="https://github.com/sug4r-wr41th/panopticon" target="_blank">panopticon</a> © 2025 Created by <a href="https://github.com/sug4r-wr41th" target="_blank">sug4r-wr41th</a> with <a href="https://react.dev/" target="_blank">React</a>, <a href="https://ant.design" target="_blank">Ant Design</a>, <a href="https://chatgpt.com" target="_blank">ChatGPT</a> and late nights.
           </Footer>
 
         </Layout>
