@@ -100,7 +100,7 @@ export default function Dashboard({ ransoms: any } : any) {
       setArticles(a);
     };
 
-    // getArticles()
+    getArticles()
 
   }, [])
 
