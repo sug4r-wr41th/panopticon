@@ -9,7 +9,7 @@ import {
 
 import { useLocalStorage } from "./hooks/useLocalStorage";
 
-import { Space, Menu, Switch, Breadcrumb, Tag, Typography, Image, Alert, Result } from "antd";
+import { Space, Menu, Switch, Breadcrumb, Tag, Typography, Image } from "antd";
 
 import { ConfigProvider, theme } from "antd";
 
@@ -19,7 +19,9 @@ import { DashboardOutlined, LinkOutlined } from "@ant-design/icons";
 
 import { Layout } from "antd";
 
-const { Sider, Content, Footer } = Layout;
+import AutoRefreshAlert from "./components/AutoRefreshAlert";
+
+const { Sider, Content, Header, Footer } = Layout;
 
 const items: MenuProps["items"] = [
   {
@@ -60,27 +62,12 @@ const items: MenuProps["items"] = [
   },
   {
     key: "link_1",
-    label: <a href="https://www.crowdstrike.com/blog/recent-articles/" target="_blank" rel="noopener noreferrer">CrowdStrike blog</a>,
-    icon: <LinkOutlined />
-  },
-  {
-    key: "link_2",
     label: <a href="https://msrc.microsoft.com/report/" target="_blank" rel="noopener noreferrer">MSRC | Report issue</a>,
     icon: <LinkOutlined />
   },
   {
-    key: "link_3",
+    key: "link_2",
     label: <a href="https://msrc.microsoft.com/report/infringement" target="_blank" rel="noopener noreferrer">MSRC | Report infringement</a>,
-    icon: <LinkOutlined />
-  },
-  {
-    key: "link_4",
-    label: <a href="https://blog.google/threat-analysis-group/" target="_blank" rel="noopener noreferrer">Google TAG</a>,
-    icon: <LinkOutlined />
-  },
-  {
-    key: "link_5",
-    label: <a href="https://abuse.ch/" target="_blank" rel="noopener noreferrer">abuse.ch</a>,
     icon: <LinkOutlined />
   }
 ];
@@ -98,23 +85,26 @@ export default function App() {
 
         <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} width={256} theme="light">
 
-          <Image preview={false} style={{ padding: 24 }} src={(isDarkMode) ? "./assets/logo-dark.png" : "./assets/logo.png"} />
+          <Image preview={false} style={{ padding: 16 }} src={(isDarkMode) ? "./assets/logo-dark.png" : "./assets/logo.png"} />
 
-          <Menu mode="inline" items={items} defaultOpenKeys={["1"]} defaultSelectedKeys={["101"]} />
-
+          <Menu mode="inline" items={items} defaultOpenKeys={["1"]} defaultSelectedKeys={["101"]} />+
         </Sider>
 
         <Layout>
-           
+
           <Content style={{ margin: "0 16px" }}>
 
-            <Breadcrumb style={{ margin: "16px 0" }} items={[{ title: "Dashboard" }, { title: "News" }, { title: "All" }]} />
+            <Space direction="horizontal" size="middle" style={{ display: 'flex' }} classNames={{ item: "ant-space-item-push" }}>
+
+              <Breadcrumb style={{ margin: "16px 0" }} items={[{ title: (<><DashboardOutlined /> <span>Dashboard</span></>) }, { title: <a href="#">News</a> }, { title: <a href="#">All</a> }]} />
+              
+              <Switch checkedChildren="Dark Mode" unCheckedChildren="Light Mode" checked={isDarkMode} onChange={(value) => { setIsDarkMode(value) }} style={{ marginLeft: "auto" }}/>
+
+            </Space>
 
             <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-
-              <Switch checkedChildren="Dark Mode" unCheckedChildren="Light Mode" checked={isDarkMode} onChange={(value) => { setIsDarkMode(value) }} style={{ float: "right" }}/>
-
-              <Alert closable message="Auto-refresh is on, page reloads every 5 minutes" type="info" showIcon />
+              
+              <AutoRefreshAlert />
 
               <Outlet />
 

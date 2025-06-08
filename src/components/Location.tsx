@@ -10,23 +10,23 @@ export default function Location() {
 
   useEffect(() => {
 
-    const getLocation = async () => {
+    const getGeoLocation = async () => {
 
-      const response = await fetch("https://ident.me/json", { mode: "cors" });
+      const response = await fetch("https://ident.me/json");
 
       const json = await response.json();
 
       setIP(json);
     };
 
-    getLocation();
+    getGeoLocation();
 
   }, []);
 
   return (
-    <Card bordered={false} size="small">
+    <Card variant="borderless" size="small">
     {
-      (location === undefined)
+      (ip === undefined)
       ?
       <Skeleton active title={false} paragraph={{ rows: 2 }} />
       :

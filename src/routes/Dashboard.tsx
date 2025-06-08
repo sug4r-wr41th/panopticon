@@ -3,7 +3,7 @@ import {
   useEffect
 } from 'react';
 
-import { Col, Row, Space, Table, Tag, Carousel, Alert, Spin, Typography } from "antd";
+import { Col, Row, Space, Table, Tag, Spin, Typography } from "antd";
 
 import { ExportOutlined } from "@ant-design/icons";
 
@@ -11,9 +11,10 @@ import Clock from "../components/Clock"
 
 import Location from "../components/Location"
 
-import Article from "../interfaces/Article";
+import RansomClaimsCarousel from '../components/RansomClaimsCarousel';
+import RansomClaimsCarouselTitle from '../components/RansomClaimsCarouselTitle';
 
-import Ransom from "../interfaces/Ransom";
+import Article from "../interfaces/Article";
 
 const columns = [
   {
@@ -99,34 +100,9 @@ export default function Dashboard({ ransoms: any } : any) {
       setArticles(a);
     };
 
-    getArticles()
+    // getArticles()
 
   }, [])
-
-  const [ransoms, setRansoms] = useState<Ransom[]>([]);
-
-  useEffect(() => {
-
-    const getPosts = async () => {
-
-      const response = await fetch("https://raw.githubusercontent.com/joshhighet/ransomwatch/main/posts.json", { mode: "cors" });
-
-      const json = await response.json()
-
-      let c: Ransom[] = [];
-
-      json.forEach((r: any) => c.push({
-        group: r.group_name,
-        discovered: r.discovered,
-        victim: r.post_title
-      } as Ransom));
-
-      setRansoms(c);
-    }
-
-    getPosts()
-
-  }, []);
 
   return (
     <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
@@ -150,13 +126,10 @@ export default function Dashboard({ ransoms: any } : any) {
         </Col>
       </Row>
 
-      <Typography.Text>This platform serves as a single pane of glass for all cyber-security related and relevant content. It's created by security personnel to assist security operation centers' threat intelligence routine by aggregating multiple feeds from well-known government agencies, magazines and researchers' blogs without jumping from source to source back and forth. At the moment it's a work in progress, features ideas and suggestions are welcome</Typography.Text>
-      
-      <Carousel autoplay dots={false} pauseOnFocus={false} pauseOnHover={false}>
-      {
-      ransoms.slice(-5).map((r: Ransom, index: number) => <Alert key={index} message={ <span>gang <i>{r.group}</i> claimed victim <i>{r.victim}</i> on <i>{r.discovered}</i> (UTC)</span> } type="error" />)
-      }
-      </Carousel>
+      <Typography.Text>This platform serves as a single pane of glass for all cyber-security related and relevant content. It's created by security personnel to assist security operation centers' threat intelligence routine by aggregating multiple feeds from well-known government agencies, magazines and researchers' blogs without jumping from source to source back and forth. At the moment it's a work in progress, features ideas and suggestions are welcome!</Typography.Text>
+
+      <RansomClaimsCarouselTitle />
+      <RansomClaimsCarousel />
 
       <Table dataSource={articles} rowKey="id" columns={columns} size="small" footer={() => { return "Fetched with RSS (Really Simple Syndication)" }} />
 

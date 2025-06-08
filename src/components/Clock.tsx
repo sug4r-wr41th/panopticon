@@ -22,7 +22,7 @@ function Clock({ title, locale, zone } : any ) {
   };
 
   return (
-    <Card bordered={false} size="small">
+    <Card variant="borderless" size="small">
       <Statistic title={title} value={useDate().time} /> {useDate().date}
     </Card>
   );
