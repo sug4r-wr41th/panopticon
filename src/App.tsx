@@ -35,7 +35,7 @@ const items: MenuProps["items"] = [
         children: [
           {
             key: 101,
-            label: <Link to="/">All</Link>
+            label: <Link to="/">Overview</Link>
           },
           {
             key: 102,
@@ -87,7 +87,7 @@ export default function App() {
 
           <Image preview={false} style={{ padding: 16 }} src={(isDarkMode) ? "./assets/logo-dark.png" : "./assets/logo.png"} />
 
-          <Menu mode="inline" items={items} defaultOpenKeys={["1"]} defaultSelectedKeys={["101"]} />+
+          <Menu mode="inline" items={items} defaultOpenKeys={["1"]} defaultSelectedKeys={["101"]} />
         </Sider>
 
         <Layout>
@@ -96,7 +96,7 @@ export default function App() {
 
             <Space direction="horizontal" size="middle" style={{ display: 'flex' }} classNames={{ item: "ant-space-item-push" }}>
 
-              <Breadcrumb style={{ margin: "16px 0" }} items={[{ title: (<><DashboardOutlined /> <span>Dashboard</span></>) }, { title: <a href="#">News</a> }, { title: <a href="#">All</a> }]} />
+              <Breadcrumb style={{ margin: "16px 0" }} items={[{ title: (<><DashboardOutlined /> <span>Dashboard</span></>) }, { title: <a href="#">News</a> }, { title: <a href="#">Overview</a> }]} />
               
               <Switch checkedChildren="Dark Mode" unCheckedChildren="Light Mode" checked={isDarkMode} onChange={(value) => { setIsDarkMode(value) }} style={{ marginLeft: "auto" }}/>
 

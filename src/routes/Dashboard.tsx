@@ -18,7 +18,7 @@ import Article from "../interfaces/Article";
 
 const columns = [
   {
-    title: 'Post Title',
+    title: 'Title',
     dataIndex: 'title',
     key: 'title',
     render: (_: any, r: Article) => <a href={r.link} target="_blank">{r.title} <ExportOutlined /></a>
@@ -38,7 +38,22 @@ const columns = [
     title: 'Category',
     dataIndex: 'category',
     key: 'category',
-    render: (text: string) => <Tag>{text}</Tag>
+    render: (text: string) => <Tag>{text}</Tag>,
+    filters: [
+      {
+        text: 'news',
+        value: 'news',
+      },
+      {
+        text: 'agency',
+        value: 'agency',
+      },
+      {
+        text: 'vendor',
+        value: 'vendor',
+      }
+    ],
+    onFilter: (value: any, record: any) => record.category.indexOf(value as string) === 0,
   },
 ];
 
@@ -131,7 +146,7 @@ export default function Dashboard({ ransoms: any } : any) {
       <RansomClaimsCarouselTitle />
       <RansomClaimsCarousel />
 
-      <Table dataSource={articles} rowKey="id" columns={columns} size="small" footer={() => { return "Fetched with RSS (Really Simple Syndication)" }} />
+      <Table dataSource={articles} rowKey="id" loading={articles.length == 0} columns={columns} size="small" footer={() => { return "Powered by RSS (Really Simple Syndication)" }} />
 
     </Space>
   )
