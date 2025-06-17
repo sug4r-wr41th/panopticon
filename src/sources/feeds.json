@@ -33,7 +33,10 @@
     "source": "any.run", "feed": "https://feeds.feedburner.com/anyrun", "category": "vendor"
   },
   {
-    "source": "ACN CSIRT Italia", "feed": "https://www.acn.gov.it/portale/feedrss/-/journal/rss/20119/723192", "category": "alerts"
+    "source": "CISA", "feed": "https://www.cisa.gov/cybersecurity-advisories/all.xml", "category": "agency"
+  },
+  {
+    "source": "ACN CSIRT Italia", "feed": "https://www.acn.gov.it/portale/feedrss/-/journal/rss/20119/723192", "category": "agency"
   },
   {
     "source": "AGiD", "feed": "https://cert-agid.gov.it/feed/", "category": "agency"
@@ -43,5 +46,11 @@
   },
   {
     "source": "The Hacker News", "feed": "https://feeds.feedburner.com/TheHackersNews", "category": "news"
+  },
+  {
+    "source": "Bleeping Computer", "feed": "https://www.bleepingcomputer.com/feed/", "category": "news"
+  },
+  {
+    "source": "Troy Hunt", "feed": "https://feeds.feedburner.com/TroyHunt", "category": "news"
   }
 ]
