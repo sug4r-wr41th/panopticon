@@ -1,6 +1,7 @@
 import {
   useState,
-  useEffect
+  useEffect,
+  useRef
 } from 'react';
 
 import { Col, Row, Space, Table, Tag, Spin, Typography } from "antd";
@@ -91,31 +92,40 @@ async function getRSSFeed(url: string, category: string, source: string) {
 
 import rss from '../sources/feeds.json'
 
-export default function Dashboard({ ransoms: any } : any) {
+export default function Dashboard() {
 
   const [articles, setArticles] = useState<Article[]>([]);
 
+  const isFirstRender = useRef(true);
+
   useEffect(() => {
 
-    const getArticles = async () => {
+    if (isFirstRender.current)
+    {
+      const getArticles = async () => {
 
-      let a: Article[] = []
+        let a: Article[] = []
 
-      for (let i = 0; i < rss.length; i++)
-      {
-        let { feed, category, source } = rss[i]
+        for (let i = 0; i < rss.length; i++)
+        {
+          let { feed, category, source } = rss[i]
 
-        const items = await getRSSFeed(feed, category, source)
+          const items = await getRSSFeed(feed, category, source)
 
-        if (items) a = a.concat(items)
-      }
+          if (items) a = a.concat(items)
+        }
 
-      a.sort((a, b) => { return new Date(b.date).valueOf() - new Date(a.date).valueOf(); })
+        a.sort((a, b) => { return new Date(b.date).valueOf() - new Date(a.date).valueOf(); })
 
-      setArticles(a);
-    };
+        setArticles(a);
+      };
 
-    getArticles()
+      getArticles()
+    }
+
+    isFirstRender.current = false;
+
+    return () => { isFirstRender.current = true };
 
   }, [])
 

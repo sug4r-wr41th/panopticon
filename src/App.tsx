@@ -85,7 +85,7 @@ export default function App() {
 
         <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} width={256} theme="light">
 
-          <Image preview={false} style={{ padding: 16 }} src={(isDarkMode) ? "./assets/logo-dark.png" : "./assets/logo.png"} />
+          <Image alt={"Web Site Logo"} preview={false} style={{ padding: 16 }} src={(isDarkMode) ? "./assets/logo-dark.png" : "./assets/logo.png"} />
 
           <Menu mode="inline" items={items} defaultOpenKeys={["1"]} defaultSelectedKeys={["101"]} />
         </Sider>
