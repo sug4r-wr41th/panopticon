@@ -36,6 +36,12 @@
     "source": "CISA", "feed": "https://www.cisa.gov/cybersecurity-advisories/all.xml", "category": "agency"
   },
   {
+    "source": "CISA (ICS Advisory)", "feed": "https://www.cisa.gov/cybersecurity-advisories/ics-advisories.xml", "category": "agency"
+  },
+  {
+    "source": "CISA (ICS Medical Advisory)", "feed": "https://www.cisa.gov/cybersecurity-advisories/ics-medical-advisories.xml", "category": "agency"
+  },
+  {
     "source": "ACN CSIRT Italia", "feed": "https://www.acn.gov.it/portale/feedrss/-/journal/rss/20119/723192", "category": "agency"
   },
   {
