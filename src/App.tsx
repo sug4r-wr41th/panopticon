@@ -41,11 +41,6 @@ const items: MenuProps["items"] = [
             key: 102,
             label: <Space><Typography.Text>Favorites</Typography.Text> <Tag color="warning">To Be Done</Tag></Space>,
             disabled: true
-          },
-          {
-            key: 103,
-            label: <Space><Typography.Text>Claims</Typography.Text> <Tag color="warning">To Be Done</Tag></Space>,
-            disabled: true
           }
         ],
         type: "group"

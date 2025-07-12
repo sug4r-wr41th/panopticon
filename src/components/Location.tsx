@@ -1,36 +1,42 @@
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect
+} from "react";
 
 import { Card, Statistic, Skeleton } from "antd";
 
-import IP from "../interfaces/IP"
+import { InfoCircleOutlined } from "@ant-design/icons";
 
 export default function Location() {
-
-  const [ip, setIP] = useState<IP | undefined>(undefined);
+  
+  const url = "https://ident.me/json";
+  const [ipAddr, setIPAddress] = useState<string>("");
+  const [ipAddrDesc, setIPAddressDesc] = useState<string>("");
 
   useEffect(() => {
 
-    const getGeoLocation = async () => {
+    const getIPAddress = async () => {
 
-      const response = await fetch("https://ident.me/json");
+      const response = await fetch(url);
 
       const json = await response.json();
 
-      setIP(json);
+      setIPAddress(json.ip);
+      setIPAddressDesc(Object.entries(json).map(([k, v]) => { return `${k}: ${v}` }).join("\n"));
     };
 
-    getGeoLocation();
+    getIPAddress();
 
   }, []);
 
   return (
     <Card variant="borderless" size="small">
     {
-      (ip === undefined)
+      (ipAddr.length == 0)
       ?
       <Skeleton active title={false} paragraph={{ rows: 2 }} />
       :
-      <span><Statistic title="Your IP Address" value={ip?.ip} /> {ip?.continent}, {ip?.country}, {ip?.city}</span>
+      <Statistic title={<span>Your IP Address <InfoCircleOutlined onClick={() => window.open(url, "_blank")} /></span>} value={ipAddr} />
     }
     </Card>
   )

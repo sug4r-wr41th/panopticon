@@ -12,6 +12,11 @@ import Clock from "../components/Clock"
 
 import Location from "../components/Location"
 
+import CVEsTrendCarousel from '../components/CVEsTrendCarousel';
+import CVEsTrendCarouselTitle from '../components/CVEsTrendCarouselTitle';
+
+import INFOCONStatus from '../components/INFOCONStatus';
+
 import RansomClaimsCarousel from '../components/RansomClaimsCarousel';
 import RansomClaimsCarouselTitle from '../components/RansomClaimsCarouselTitle';
 
@@ -62,7 +67,7 @@ async function getRSSFeed(url: string, category: string, source: string) {
 
   try {
 
-    const response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`)
+    const response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, { mode: "cors" })
 
     const text = await response.text()
 
@@ -138,23 +143,36 @@ export default function Dashboard() {
           <Location />
         </Col>
 
-        <Col span={6}>
+        <Col span={5}>
           <Clock title="Rome, Italy" locale="it-IT" zone="Europe/Rome" />
         </Col>
 
-        <Col span={6}>
+        <Col span={5}>
           <Clock title="New York, United States" locale="en-US" zone="America/New_York" />
         </Col>
 
-        <Col span={6}>
-          <Clock title="Tokyo, Japan" locale="ja-JP" zone="Asia/Tokyo" />
+        <Col span={5}>
+          <Clock title="Moscow, Russia" locale="ru-RU" zone="Europe/Moscow" />
+        </Col>
+
+        <Col span={3}>
+          <INFOCONStatus />
         </Col>
       </Row>
 
       <Typography.Text>This platform serves as a single pane of glass for all cyber-security related and relevant content. It's created by security personnel to assist security operation centers' threat intelligence routine by aggregating multiple feeds from well-known government agencies, magazines and researchers' blogs without jumping from source to source back and forth. At the moment it's a work in progress, features ideas and suggestions are welcome!</Typography.Text>
 
-      <RansomClaimsCarouselTitle />
-      <RansomClaimsCarousel />
+      <Row gutter={16}>
+        <Col span={8}>
+          <CVEsTrendCarouselTitle />
+          <CVEsTrendCarousel />
+        </Col>
+
+        <Col span={16}>
+          <RansomClaimsCarouselTitle />
+          <RansomClaimsCarousel />
+        </Col>
+      </Row>
 
       <Table dataSource={articles} rowKey="id" loading={articles.length == 0} columns={columns} size="small" footer={() => { return "Powered by RSS (Really Simple Syndication)" }} />
 
