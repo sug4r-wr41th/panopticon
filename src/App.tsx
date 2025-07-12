@@ -9,7 +9,7 @@ import {
 
 import { useLocalStorage } from "./hooks/useLocalStorage";
 
-import { Space, Menu, Switch, Breadcrumb, Tag, Typography, Image } from "antd";
+import { Space, Menu, Switch, Breadcrumb, Tag, Typography, Image, FloatButton } from "antd";
 
 import { ConfigProvider, theme } from "antd";
 
@@ -117,6 +117,8 @@ export default function App() {
           </Footer>
 
         </Layout>
+
+        <FloatButton.BackTop />
 
       </Layout>
 
