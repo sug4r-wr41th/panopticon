@@ -15,7 +15,7 @@ export default function CVEsTrendCarousel() {
 
       console.log("CVEsTrendsCarousel::getPosts called...");
 
-      const response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, { mode: "cors" })
+      const response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent("https://cvemon.intruder.io/rss/cvetrends/latest")}`, { mode: "cors" })
       
       const text = await response.text()
 
@@ -35,8 +35,6 @@ export default function CVEsTrendCarousel() {
           intruder_max_score: "100",
           link: i.querySelector("link")!.innerHTML,
         }
-
-        for (let k in item) { item[k] = item[k].replace("<![CDATA[", "").replace("]]>", ""); }
 
         items.push(item);
       })
