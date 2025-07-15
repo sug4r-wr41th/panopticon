@@ -32,11 +32,7 @@ export default function Location() {
   return (
     <Card variant="borderless" size="small">
     {
-      (ipAddr.length == 0)
-      ?
-      <Skeleton active title={false} paragraph={{ rows: 2 }} />
-      :
-      <Statistic title={<span>Your IP Address <InfoCircleOutlined onClick={() => window.open(url, "_blank")} /></span>} value={ipAddr} />
+      <Statistic title={<span>Your IP Address <InfoCircleOutlined onClick={() => window.open(url, "_blank")} /></span>} loading={ipAddr.length === 0} value={ipAddr} />
     }
     </Card>
   )

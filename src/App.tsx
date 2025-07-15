@@ -71,7 +71,7 @@ export default function App() {
 
   const [isDarkMode, setIsDarkMode] = useLocalStorage("isDarkMode", true);
 
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   return (
     <ConfigProvider theme={{ algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm }}>

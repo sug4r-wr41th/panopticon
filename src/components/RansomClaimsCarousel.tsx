@@ -3,17 +3,17 @@ import {
   useEffect
 } from "react";
 
-import { Carousel, Alert } from "antd";
+import { Carousel, Alert, Skeleton } from "antd";
 
 import Ransom from "../interfaces/Ransom";
 
 export default function RansomClaimsCarousel() {
 
-  const [ransoms, setRansoms] = useState<Ransom[]>([]);
+  const [claims, setClaims] = useState<Ransom[]>([]);
 
   useEffect(() => {
 
-    const getPosts = async () => {
+    const getClaims = async () => {
 
       console.log("RansomClaimsCarousel::getPosts called...");
 
@@ -29,18 +29,24 @@ export default function RansomClaimsCarousel() {
         victim: i.post_title
       } as Ransom));
 
-      setRansoms(r);
+      setClaims(r);
     }
 
-    getPosts()
+    getClaims()
 
   }, []);
 
-  return (
-    <Carousel autoplay dots={false} pauseOnFocus={false} pauseOnHover={false}>
-    {
-    ransoms.slice(-10).map((r: Ransom, index: number) => <Alert key={index} message={ <span>gang <b>{r.group}</b> claimed victim <b>{r.victim}</b> on <b>{r.discovered}</b> (UTC)</span> } type="error" />)
-    }
-    </Carousel>
-  )
+  if (claims.length === 0) {
+    return (
+      <Skeleton.Input active />
+    )
+  } else {
+    return (
+      <Carousel autoplay dots={false} pauseOnFocus={false} pauseOnHover={false}>
+      {
+      claims.slice(-10).map((r: Ransom, index: number) => <Alert key={index} message={ <span>gang <b>{r.group}</b> claimed victim <b>{r.victim}</b> on <b>{r.discovered}</b> (UTC)</span> } type="error" />)
+      }
+      </Carousel>
+    )
+  }
 }
