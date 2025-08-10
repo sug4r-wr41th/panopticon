@@ -17,7 +17,7 @@ export default function CVEsTrendCarousel() {
 
       try {
 
-        const response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent("https://cvemon.intruder.io/rss/cvetrends/latest")}`, { mode: "cors" })
+        const response = await fetch(`https://panopticon-sug4r-wr41th.vercel.app/api/rss?url=${encodeURIComponent("https://cvemon.intruder.io/rss/cvetrends/latest")}`)
         
         const text = await response.text()
 

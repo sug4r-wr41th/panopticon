@@ -66,8 +66,7 @@ const columns = [
 async function getRSSFeed(url: string, category: string, source: string) {
 
   try {
-
-    const response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, { mode: "cors" })
+    const response = await fetch(`https://panopticon-sug4r-wr41th.vercel.app/api/rss?url=${encodeURIComponent(url)}`);
 
     const text = await response.text()
 
