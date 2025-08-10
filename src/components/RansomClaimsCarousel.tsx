@@ -15,7 +15,7 @@ export default function RansomClaimsCarousel() {
 
       console.log("RansomClaimsCarousel::getPosts called...");
 
-      const response = await fetch("https://api.ransomware.live/v2/recentvictims");
+      const response = await fetch("https://raw.githubusercontent.com/joshhighet/ransomwatch/main/posts.json");
 
       const json = await response.json()
 
@@ -34,7 +34,7 @@ export default function RansomClaimsCarousel() {
     return (
       <Carousel autoplay dots={false} pauseOnFocus={false} pauseOnHover={false}>
       {
-      claims.slice(-10).map((r: object, i: number) => <Alert key={i} message={ <span>gang <b>{r.group}</b> claimed victim <b>{r.victim}</b> on <b>{r.attackdate}</b> (UTC)</span> } type="error" />)
+      claims.slice(-10).map((r: object, i: number) => <Alert key={i} message={ <span>gang <b>{r.group}</b> claimed victim <b>{r.victim}</b> on <b>{r.discovered}</b> (UTC)</span> } type="error" />)
       }
       </Carousel>
     )
