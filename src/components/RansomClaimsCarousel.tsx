@@ -5,11 +5,9 @@ import {
 
 import { Carousel, Alert, Skeleton } from "antd";
 
-import Ransom from "../interfaces/Ransom";
-
 export default function RansomClaimsCarousel() {
 
-  const [claims, setClaims] = useState<Ransom[]>([]);
+  const [claims, setClaims] = useState<object[]>([]);
 
   useEffect(() => {
 
@@ -17,19 +15,11 @@ export default function RansomClaimsCarousel() {
 
       console.log("RansomClaimsCarousel::getPosts called...");
 
-      const response = await fetch("https://raw.githubusercontent.com/joshhighet/ransomwatch/main/posts.json");
+      const response = await fetch("https://api.ransomware.live/v2/recentvictims");
 
       const json = await response.json()
 
-      let r: Ransom[] = [];
-
-      json.forEach((i: any) => r.push({
-        group: i.group_name,
-        discovered: i.discovered,
-        victim: i.post_title
-      } as Ransom));
-
-      setClaims(r);
+      setClaims(json);
     }
 
     getClaims()
@@ -44,7 +34,7 @@ export default function RansomClaimsCarousel() {
     return (
       <Carousel autoplay dots={false} pauseOnFocus={false} pauseOnHover={false}>
       {
-      claims.slice(-10).map((r: Ransom, index: number) => <Alert key={index} message={ <span>gang <b>{r.group}</b> claimed victim <b>{r.victim}</b> on <b>{r.discovered}</b> (UTC)</span> } type="error" />)
+      claims.slice(-10).map((r: object, i: number) => <Alert key={i} message={ <span>gang <b>{r.group}</b> claimed victim <b>{r.victim}</b> on <b>{r.attackdate}</b> (UTC)</span> } type="error" />)
       }
       </Carousel>
     )

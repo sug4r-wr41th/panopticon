@@ -16,19 +16,12 @@ export default function INFOCONStatus () {
 
     const getStatus = async () => {
 
-      const response = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent("https://isc.sans.edu/infocon.txt")}`, { mode: "cors" });
+      const response = await fetch("https://panopticon-sug4r-wr41th.vercel.app/api/infoconStatus");
 
-      const text = await response.text();
+      const json = await response.json();
 
-      setStatus(text);
-
-      switch ( text ) {
-        case "green": setStatusColor("#51B435"); break;
-        case "yellow": setStatusColor("#F2F250"); break;
-        case "orange": setStatusColor("#F6C844"); break;
-        case "red": setStatusColor("#D72F20"); break;
-        default: setStatusColor("#2D25E1"); break;
-      }
+      setStatus(json.status);
+      setStatusColor(json.color);
     };
 
     getStatus();
