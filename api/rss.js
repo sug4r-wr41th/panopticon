@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const url = res.query.url;
+  const url = req.query.url;
 
   if (!url) { res.status(500).send("error::query_missing_URL"); }
 
